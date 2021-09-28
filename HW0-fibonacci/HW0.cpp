@@ -1,7 +1,7 @@
 /*
      Author: Matthew Lepis
-	 Date: 8/31/202
-	 Description: CPE593A, HW1, fibonacci recursion
+	 Date: 8/31/2021
+	 Description: CPE593A, HW0, fibonacci recursion
 */
 
 #include <iostream>
