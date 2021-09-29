@@ -14,7 +14,7 @@ using namespace std;
 uint32_t eratosthenes(uint64_t n)
 {
 	uint32_t count = 0;
-	bool isPrime[n+1];
+	bool *isPrime = new bool[n+1];
 
 	for (uint64_t i = 2; i <= n; i++)
 		isPrime[i] = true;
@@ -33,7 +33,7 @@ uint32_t eratosthenes(uint64_t n)
 		if (isPrime[i])
 			count++;
 	}
-
+	delete [] isPrime;
 	return count;
 }
 
@@ -52,4 +52,3 @@ int main()
 
 	return 0;
 }
-
