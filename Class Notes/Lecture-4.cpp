@@ -137,9 +137,59 @@ void slowshuffle(int[] x, int n)
 // Fisher-Yates
 void fisherYatesShuffle(int[] x, n)
 {
-    for (int i = n; i >= 0; i--)
+    for (int i = n; i >= 0; i--) // O(n)
     {
-        pick = random(0, i);
-        swap(x[i], x[pick]);
+        int pos = abs(rand() % i); // O(1)
+        swap(x[i], x[pos]); // O(1)
     }
 }
+
+// SEARCH ------------------------------------------------------------------------------------
+//
+//
+
+int binary_search(const int a[], int n, int target)
+{
+    int L = 0, R = n-1;
+
+
+    if (target < a[L] || target > a[R]) // OPTIMIZATION: to catch target that is out of range of the data.
+        return -1;
+
+    while (L < R)
+    {
+        int mid = (L + R) / 2;
+
+        if (a[mid] > target) // If mid is > target half the dataset.
+            R = mid - 1;
+
+        else if (a[mid] < target) // If mid is < target half the dataset.
+            L = mid + 1;
+
+        else
+            return mid; // FOUND IT!
+    }
+    return -1; // NOT FOUND.
+}
+
+int binary_searchMAIN()
+{
+    int list[] = {1,3,9,16,17,17,17,18,21,100,103,210};
+    const int n = sizeof(list)/sizeof(int);
+}
+
+// Golden Mean Search
+// Φ = (1+sqrt(5))/2 = 1.618...
+
+/*
+n = 10^6
+L = 0   R = n-1
+S = (R-L) / phi = 600k
+a = 600k, b = 400k
+R = a
+b = a
+S = (R-L) / phi
+a = R - S
+... continue ... ??? wtf happened above ??? Might literally be unhelpful as hell.
+*/
+

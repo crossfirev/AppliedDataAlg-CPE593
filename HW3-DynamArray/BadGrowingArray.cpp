@@ -111,6 +111,7 @@ public:
 			const int* temp = data; 			// Creating temporary pointer to hold memory address for copying the old data from.
 			data = new int[length + 1];			// Creating new array of size + 1 to the old array at a new memory location. MEMORY ALLOCATION!
 
+			// memcpy(data, temp, length * sizeof(int)); copys param2 into param1, param 3 is amount of bytes to be copied! THIS IS FASTER THAN THE FOLLOWING LOOP!
 			for (int i = 0; i < length; i++)	// Looping through the array to copy data from the old (temp) array to the new (data) array.
 				data[i] = temp[i];
 			delete [] temp;						// Deleting the temp array
