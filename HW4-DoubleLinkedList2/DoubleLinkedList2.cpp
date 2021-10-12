@@ -1,7 +1,7 @@
 /**
  * @file DoubleLinkedList2.cpp
  * @author Matthew Lepis (mlepis@stevens.edu / lepismatthew@gmail.com)
- * @brief Linked List implementation which employs a previous pointer for backwards navigation.
+ * @brief Linked List implementation which employs a previous pointer for backwards navigation. For CPE 593, Applied Algorithms and Data Structures.
  * @version 0.1
  * @date 2021-10-12
  */
