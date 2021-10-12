@@ -56,7 +56,6 @@ public:
 
 	/**
 	 * @brief Construct a new Double Linked List 2 object
-	 * 
 	 */
 	DoubleLinkedList2()
 	{
