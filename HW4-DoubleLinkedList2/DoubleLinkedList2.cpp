@@ -20,6 +20,14 @@ using std::cout;
 using std::endl;
 
 /**
+ * @brief Two-way navigable data structure. 
+ */
+class DoubleLinkedList2
+{
+private:
+	unsigned int len;
+
+	/**
  * @brief Node - a class that acts as a 'node' of the linked list. Nodes are linked together using the "Node" pointers via DoubleLinkedeList2.
  */
 class Node
@@ -42,14 +50,6 @@ public:
 		value = v;
 	}
 };
-
-/**
- * @brief Two-way navigable data structure. 
- */
-class DoubleLinkedList2
-{
-private:
-	unsigned int len;
 public:
 	Node* head;
 	Node* tail;
@@ -169,9 +169,84 @@ public:
 	}
 };
 
+class DoubleLinkedList
+{
+private:
+	int len;
+class Node
+{
+public:
+	Node *prev;
+	Node *next;
+	int value;
+
+	Node()
+	{
+		prev = nullptr;
+		next = nullptr;
+		value = 0;
+	}
+	Node(int v)
+	{
+		prev = nullptr;
+		next = nullptr;
+		value = v;
+	}
+};
+public:
+	Node* head;
+	
+	DoubleLinkedList()
+	{
+		head = nullptr;
+		len = 0;
+	}
+	DoubleLinkedList(int list[], int listLength)
+	{
+		DoubleLinkedList();
+		for(int i = listLength; i > 0; i--)
+			addStart(list[i]);
+	}
+
+	void addStart(int v)
+	{
+		if(len == 0)
+			head = new Node(v);
+
+		else
+		{
+			head->prev = new Node(v);
+			head->prev->next = head;
+			head = head->prev;
+		}
+		len++;
+	}
+
+	void printList(bool direction)
+	{
+		if(direction) // Forward
+		{
+			for(Node *temp = head; temp != nullptr; temp = temp->next)
+				cout << temp->value << " ";
+		}
+		else
+		{
+			Node *temp = head;
+			for(; temp->next != nullptr; temp = temp->next);
+
+			for(; temp != nullptr; temp = temp->prev)
+				cout << temp->value << " ";
+		}
+	}
+};
 int main()
 {
-    DoubleLinkedList2 mylist;
+	int arr[] = {1, 2, 3, 4, 5, 6};
+	DoubleLinkedList list(arr, 6);
+
+	list.printList(false);
+}
+/*   DoubleLinkedList2 mylist;
 
     for (int i = 0; i < 10; i++)
       mylist.addEnd(i); // 0 1 2 3 4 5 6 7 8 9
@@ -182,4 +257,4 @@ int main()
     cout << mylist << '\n'; // print the list!
     cout << mylist.size();  
 	return 0;
-}
+}*/
